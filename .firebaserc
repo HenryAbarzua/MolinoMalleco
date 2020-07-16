@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "molinomalleco": {
+      "hosting": {
+        "MolinoMallecoLog": [
+          "molinomalleco"
+        ]
+      }
+    }
+  }
+}

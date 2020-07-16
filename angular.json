@@ -28,9 +28,15 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -121,8 +127,16 @@
               "devServerTarget": "MolinoMallecoLog:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "MolinoMallecoLog"
+    }
+  },
+  "defaultProject": "MolinoMallecoLog",
+  "cli": {
+    "analytics": "58764f23-69a8-4354-9fc2-f31c50af724f"
+  }
 }
