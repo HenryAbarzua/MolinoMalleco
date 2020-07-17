@@ -27,7 +27,7 @@ async onRegister(){
     const user = this.authSvc.register(email, password);
     if(user){
       //rediect to home
-      this.router.navigate(['/home']);
+      this.router.navigate(['/verification-email']);
     }
   }
   catch(error){

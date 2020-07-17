@@ -4,34 +4,29 @@
         aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
     <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" routerLink="/"></a>
-            </li>
-        </ul>
-        <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else Login">
-            <li class="nav-item" *ngIf="user">
-                <a class="nav-link" (click)="onLogout()">Logout</a>
-            </li>
-                <li class="nav-item">
-                    <a class="nav-link">{{user?.email}}</a>
-
-                </li>
-            </ul>
-        <ng-template #Login>
-            <ul class="navbar-nav mx-auto">
-            <li class="nav-item" *ngIf="!user$">
-                <a class="nav-link" routerLink="/login">Login</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav mr-auto" >
-            <li class="nav-item" *ngIf="!user$" >
-                <a class="nav-link" routerLink="/register">Register</a>
-            </li>
-        </ul>
-
-        </ng-template>
+                  <a class="nav-link" routerLink="/">Home</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else login">
+      <li class="nav-item" *ngIf="user">
+        <a href="#" class="nav-link" (click)="onLogout()">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"> {{ user?.email }}</a>
+      </li>
+    </ul>
+    <ng-template #login>
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Register</a>
+        </li>
+      </ul>
+    </ng-template>
     </div>
 </nav>
