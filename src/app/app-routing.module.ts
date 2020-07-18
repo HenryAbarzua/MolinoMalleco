@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
-
+import {ProductViewComponent} from './product-view/product-view.component';
 
 const routes: Routes = [
 {path:'',
@@ -13,6 +13,7 @@ const routes: Routes = [
 { path: 'register', loadChildren: () => import('./auth/register/register.module').then(m => m.RegisterModule)},
 { path: 'verification-email', component: SendEmailComponent, },
 { path: 'forgot-password', loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
+{ path: 'products', component: ProductViewComponent, }
 ];
 
 

@@ -1,0 +1,23 @@
+<div class="card text-white bg-success    mb-3">
+  <div class="card-body">
+<div *ngIf="product">
+    <div>
+      <label>Tipo de Producto: </label> {{product.Type}}
+    </div>
+    <div>
+      <label>Cantidad: </label> {{product.quantity}}
+    </div>
+    <div>
+      <label>Active: </label> {{product.active}}
+    </div>
+   
+    <span class="btn btn-primary" *ngIf='product.active' (click)='updateActivie(false)'>Inactive</span>
+   
+    <span class="btn btn-primary" *ngIf='!product.active' (click)='updateActivie(true)'>Active</span>
+   
+    <span class="btn btn-danger" (click)='deleteCustomer()'>Delete</span>
+   
+    <hr/>
+  </div>
+</div>
+</div>

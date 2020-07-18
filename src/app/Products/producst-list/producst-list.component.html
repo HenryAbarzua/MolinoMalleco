@@ -1,0 +1,17 @@
+<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+    <div class="card-header"><h1>Productos</h1></div>
+    <div class="card-body">
+        <div *ngFor="let product of products" style="width: 300px;">
+            <app-product-details [product]='product' ></app-product-details>
+            </div>
+            <div style="margin-top:20px;">
+              <button class="btn btn-danger" (click)='deleteProducts()'>Delete All</button>
+            </div>
+    </div>
+
+
+
+
+
+
+
