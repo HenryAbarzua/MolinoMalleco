@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import {ProductViewComponent} from './product-view/product-view.component';
 
+
 const routes: Routes = [
 {path:'',
  redirectTo:'/home',

@@ -14,7 +14,7 @@ import { ProducstListComponent } from './Products/producst-list/producst-list.co
 import { CreateProductComponent } from './Products/create-product/create-product.component';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { FormsModule } from '@angular/forms';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
     ProductDetailsComponent,
     ProducstListComponent,
     CreateProductComponent,
-    ProductViewComponent
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +37,8 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    NgbModule
  
     
     
