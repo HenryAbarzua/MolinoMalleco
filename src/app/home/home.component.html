@@ -1,5 +1,5 @@
 
-<h1 class="text-center mt-4">Bienvenido a Molino Malleco</h1>
+<h1 class="text-center mt-4" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Bienvenido a Molino Malleco</h1>
 
 
 <ngb-carousel class="text-center mt-4 mb-3">
@@ -8,9 +8,14 @@
         <img src="{{pelicula.img}}" width="1125" height="550" alt="A 200x200 image" alt="Random first slide">
       </div>
       <div class="carousel-caption">
+        <div class="card">
+          <div class="card-body">
+            <h1 style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; color:midnightblue;" >{{pelicula.name}}</h1>
+            <h3 style="text-align:center;font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif ; color:navy;">{{pelicula.desc}}</h3>
+          </div>
+        </div>
         
-        <h1 style="font-family: cursive; color: blue;" >{{pelicula.name}}</h1>
-        <h3 style="text-align:center;font-family: cursive; color: blue; background-color:powderblue;">{{pelicula.desc}}</h3>
+        
       </div>
     </ng-template>
 </ngb-carousel>

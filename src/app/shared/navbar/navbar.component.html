@@ -10,12 +10,12 @@
                   <a class="nav-link" routerLink="/">Home</a>
       </li>
     </ul>
-    <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user; else login">
-      <li class="nav-item" *ngIf="user">
-        <a class="nav-link" routerLink="/products">Productos</a>
-      </li>
+    <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user ; else login">
       <li class="nav-item" *ngIf="user">
         <a href="#" class="nav-link" (click)="onLogout()">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products" novalidate>Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link"> {{ user?.email }}</a>
@@ -29,6 +29,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/register">Register</a>
         </li>
+        
+        
+        
       </ul>
     </ng-template>
     </div>
