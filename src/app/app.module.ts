@@ -15,8 +15,10 @@ import { CreateProductComponent } from './Products/create-product/create-product
 import { ProductViewComponent } from './product-view/product-view.component';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import {ConfirmationDialogComponent} from "./Products/product-details/confirmation-dialog/confirmation-dialog.component";
 
 
 
@@ -29,6 +31,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ProducstListComponent,
     CreateProductComponent,
     ProductViewComponent,
+    ConfirmationDialogComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    MatDialogModule, 
+    BrowserAnimationsModule, 
+    MatButtonModule, 
  
     
     
@@ -47,5 +54,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

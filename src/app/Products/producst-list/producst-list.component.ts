@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { map } from 'rxjs/operators';
+
+
 @Component({
   selector: 'app-producst-list',
   templateUrl: './producst-list.component.html',
@@ -15,7 +17,7 @@ export class ProducstListComponent implements OnInit {
   ngOnInit(): void {
     this.getProductList()
   }
-
+  
   getProductList() {
     this.productService.getProductList().snapshotChanges().pipe(
       map(changes =>
