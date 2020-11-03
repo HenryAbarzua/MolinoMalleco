@@ -9,9 +9,12 @@ import { ProductService } from '../../product.service';
 })
 export class ConfirmationDialogComponent implements OnInit {
   @Input() product: Product;
+
   constructor(private productService: ProductService,
     public dialog: MatDialogRef<ConfirmationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public mensaje: string) { }
+
+    @Inject(MAT_DIALOG_DATA) public mensaje: string) 
+    { }
 
     cerrarDialogo(): void {
       this.dialog.close(false);
