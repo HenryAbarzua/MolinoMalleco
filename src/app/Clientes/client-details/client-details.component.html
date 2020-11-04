@@ -1,0 +1,24 @@
+<div class="card text-white bg-success    mb-3">
+  <div class="card-body">
+<div *ngIf="client">
+    <div>
+      <label>Tipo de Producto: </label> {{client.Type}}
+    </div>
+    <div>
+      <label>Cantidad: </label> {{client.quantity}}
+    </div>
+    <div>
+      <label>Active: </label> {{client.active}}
+    </div>
+   
+    <span class="btn btn-primary" *ngIf='client.active' (click)='updateActivie(false)'>Inactive</span>
+   
+    <span class="btn btn-primary" *ngIf='!client.active' (click)='updateActivie(true)'>Active</span>
+   
+    <button mat-raised-button mat-button color="warn" (click)="ShowDialog()">Delete</button>
+   
+    <hr/>
+  </div>
+
+</div>
+</div>

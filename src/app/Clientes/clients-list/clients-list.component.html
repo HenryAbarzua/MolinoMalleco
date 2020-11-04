@@ -1,0 +1,16 @@
+<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+    <div class="card-header"><h1>Clientes</h1></div>
+    <div class="card-body">
+        <div *ngFor="let client of clients" style="width: 300px;">
+            <app-client-details [client]='client' ></app-client-details>
+            </div>
+            <div style="margin-top:20px;">
+              <button class="btn btn-danger" (click)='deleteClients()'>Delete All</button>
+            </div>
+    </div>
+
+
+
+
+
+
