@@ -1,11 +1,14 @@
-<div class="card text-white bg-dark mb-3" style="max-width: 40rem;">
+<div class="card text-white mb-3" style="max-width: 40rem; background-color: #2dba8b;">
+  <svg class="vector">
+    <use xlink:href="src\assets\person_add-24px.svg"></use>
+ </svg>
     <div class="card-header"><h1>Clientes</h1></div>
     <div class="card-body">
         <div *ngFor="let client of clients" style="width: 300px;">
             <app-client-details [client]='client' ></app-client-details>
             </div>
             <div style="margin-top:20px;">
-              <button class="btn btn-danger" (click)='deleteClients()'>Delete All</button>
+              <button class="btn btn-danger"  (click)='deleteClients()'>Delete All</button>
             </div>
     </div>
 
