@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { ClientViewComponent } from './client-view/client-view.component';
 import {ProductViewComponent} from './product-view/product-view.component';
+import {ListCustomersComponent} from './components/list-customers/list-customers.component';
 
 
 const routes: Routes = [
@@ -16,8 +17,8 @@ const routes: Routes = [
 { path: 'verification-email', component: SendEmailComponent, },
 { path: 'forgot-password', loadChildren: () => import('./auth/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
 { path: 'products', component: ProductViewComponent, },
-{ path: 'clientes', component: ClientViewComponent, }
-
+{ path: 'clientes', component: ClientViewComponent, },
+{ path: 'List', component: ListCustomersComponent }
 
 ];
 

@@ -27,6 +27,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import {ConfirmationDialogComponent} from "./Products/product-details/confirmation-dialog/confirmation-dialog.component";
 import { from } from 'rxjs';
+import { MatModule } from './mat/mat.module';
+import { ListCustomersComponent } from './components/list-customers/list-customers.component';
+
 
 
 
@@ -43,7 +46,8 @@ import { from } from 'rxjs';
     ClientsListComponent,
     CreateClientComponent,
     ConfirmationDialogComponent,
-    ClientViewComponent
+    ClientViewComponent,
+    ListCustomersComponent
 
   ],
   imports: [
@@ -57,7 +61,7 @@ import { from } from 'rxjs';
     NgbModule,
     MatDialogModule, 
     BrowserAnimationsModule, 
-    MatButtonModule, 
+    MatButtonModule, MatModule, 
  
     
     

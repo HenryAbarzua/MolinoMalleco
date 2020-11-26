@@ -3,6 +3,13 @@ import { Client } from '../Client';
 import { ClientService } from '../client.service';
 import { MatDialog } from "@angular/material/dialog";
 import {ConfirmationDialogComponent} from "./confirmation-dialog/confirmation-dialog.component";
+import { MatTableDataSource } from '@angular/material/table';
+import { Action } from 'rxjs/internal/scheduler/Action';
+import { subscribeOn } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
+
+
 
 @Component({
   selector: 'app-client-details',
@@ -10,8 +17,10 @@ import {ConfirmationDialogComponent} from "./confirmation-dialog/confirmation-di
   styleUrls: ['./client-details.component.scss']
 })
 export class ClientDetailsComponent implements OnInit {
-
+  displayedColumns: string[] = ['type', 'quantity', 'active'];
+  dataSource = new MatTableDataSource();
   @Input() client: Client;
+clients: any;
 
   constructor(private clientService: ClientService, public dialog:MatDialog) { }
 
@@ -31,6 +40,21 @@ export class ClientDetailsComponent implements OnInit {
       });
   }
   ngOnInit(): void {
+  
+      this.clientService.getClientList().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(c =>
+            ({ key: c.payload.key, ...c.payload.val() })
+          )
+        )
+      ).subscribe(clients => {
+        this.clients = clients;
+      });
+    
+    
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   updateActivie(isActive: boolean){
@@ -43,4 +67,5 @@ export class ClientDetailsComponent implements OnInit {
       .deleteClient(this.client.key)
       .catch(err => console.log(err));
   }
+ 
 }
