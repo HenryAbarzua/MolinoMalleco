@@ -38,6 +38,7 @@ export class ProductService {
   }
  
   getProductList(): AngularFireList<Product> {
+
     return this.productRef;
   }
  

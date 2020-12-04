@@ -27,8 +27,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import {ConfirmationDialogComponent} from "./Products/product-details/confirmation-dialog/confirmation-dialog.component";
 import { from } from 'rxjs';
+import { ListCustomersComponent } from './components/list-customers/list-customers.component';
+import {MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import {CustomersService} from './service/customers.service';
 
-
+import {AngularFirestoreModule} from '@angular/fire/firestore'
 
 @NgModule({
   declarations: [
@@ -43,7 +48,8 @@ import { from } from 'rxjs';
     ClientsListComponent,
     CreateClientComponent,
     ConfirmationDialogComponent,
-    ClientViewComponent
+    ClientViewComponent,
+    ListCustomersComponent
 
   ],
   imports: [
@@ -51,20 +57,24 @@ import { from } from 'rxjs';
     AppRoutingModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     FormsModule,
     NgbModule,
     MatDialogModule, 
     BrowserAnimationsModule, 
-    MatButtonModule, 
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatInputModule 
  
     
     
     
     
   ],
-  providers: [],
+  providers: [CustomersService],
   bootstrap: [AppComponent]
 
 })

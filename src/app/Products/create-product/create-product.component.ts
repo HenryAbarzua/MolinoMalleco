@@ -21,6 +21,7 @@ export class CreateProductComponent implements OnInit {
     this.product = new Product();
   }
 save() {
+ 
   this.productService.createProduct(this.product);
   this.product = new Product();
 }

@@ -41,6 +41,7 @@ export class ClientService {
     return this.clientRef;
   }
  
+
   deleteAll(): Promise<void> {
   
       return this.clientRef.remove();

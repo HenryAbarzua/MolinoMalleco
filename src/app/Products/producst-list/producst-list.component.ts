@@ -19,10 +19,11 @@ export class ProducstListComponent implements OnInit {
   }
   
   getProductList() {
+    
     this.productService.getProductList().snapshotChanges().pipe(
       map(changes =>
         changes.map(c =>
-          ({ key: c.payload.key, ...c.payload.val() })
+          ({ key: c.payload, ...c.payload.val() })
         )
       )
     ).subscribe(products => {
