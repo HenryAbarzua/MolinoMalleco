@@ -9,12 +9,12 @@ import { AngularFireAuthModule} from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { SendEmailComponent } from './auth/send-email/send-email.component';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-
+import { MatSortModule } from '@angular/material/sort';
 import { ProductDetailsComponent } from './Products/product-details/product-details.component';
 import { ProducstListComponent } from './Products/producst-list/producst-list.component';
 import { CreateProductComponent } from './Products/create-product/create-product.component';
 import { ProductViewComponent } from './product-view/product-view.component';
-
+import { MatIconModule } from '@angular/material/icon';
 import { ClientDetailsComponent} from './Clientes/client-details/client-details.component';
 import { ClientsListComponent} from './Clientes/clients-list/clients-list.component';
 import { CreateClientComponent} from './Clientes/create-client/create-client.component';
@@ -33,7 +33,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import {CustomersService} from './service/customers.service';
 
-import {AngularFirestoreModule} from '@angular/fire/firestore'
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { FormComponent } from './Products/form/form.component'
 
 @NgModule({
   declarations: [
@@ -49,7 +50,9 @@ import {AngularFirestoreModule} from '@angular/fire/firestore'
     CreateClientComponent,
     ConfirmationDialogComponent,
     ClientViewComponent,
-    ListCustomersComponent
+    ListCustomersComponent,
+    FormComponent
+    
 
   ],
   imports: [
@@ -67,7 +70,10 @@ import {AngularFirestoreModule} from '@angular/fire/firestore'
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule 
+    MatInputModule,
+    MatSortModule,
+    MatIconModule
+   
  
     
     

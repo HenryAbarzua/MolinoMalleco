@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../product.service';
+import { Component, OnInit , ViewChild} from '@angular/core';
+import { ProductsService } from '../../service/products.service';
 import { map } from 'rxjs/operators';
+import { MatTableDataSource} from '@angular/material/table';
+import { MatSort} from '@angular/material/sort';
 
 
 @Component({
@@ -9,36 +11,30 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./producst-list.component.scss']
 })
 export class ProducstListComponent implements OnInit {
+  displayedColumns: string[] = ['nombre', 'cantidad','actions'];
+  dataSource = new MatTableDataSource();
+  @ViewChild(MatSort) sort: MatSort;
+  constructor(private productsService: ProductsService){
 
-  products: any;
-
-  constructor(private productService: ProductService) { }
-
-  ngOnInit(): void {
-    this.getProductList()
   }
-  
-  getProductList() {
+  ngOnInit() {
+    this.productsService.getAllProducts().subscribe(res => this.dataSource.data = res);
     
-    this.productService.getProductList().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c =>
-          ({ key: c.payload, ...c.payload.val() })
-        )
-      )
-    ).subscribe(products => {
-      this.products = products;
-    });
   }
- 
-  deleteProducts() {
-    this.productService.deleteAll().catch(err => console.log(err));
+  ngAfterViewInit(){
+    this.dataSource.sort = this.sort;
   }
- 
+  filtrar(event: Event) {
+    const filtro = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filtro.trim().toLowerCase();
+  }  
+  onEdit(element){
+    this.productsService.selected = element;
+  }
+  onDelete(id: string){
+    this.productsService.deleteProducts(id);
+  }
 }
-
-
-
 
 
 
