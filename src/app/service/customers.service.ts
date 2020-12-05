@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { snapshotChanges } from '@angular/fire/database';
+import { Injectable } from '@angular/core'
+import { snapshotChanges } from '@angular/fire/database'
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore'
 import {Observable} from 'rxjs'
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { Action } from 'rxjs/internal/scheduler/Action'
 import {map} from 'rxjs/operators'
 import { CustomerI}from '../models/customers.interface'
 
@@ -20,16 +20,12 @@ this.customers = this.customerCollection.snapshotChanges().pipe(
   map(actions => actions.map(
     a =>{
       const data = a.payload.doc.data() as CustomerI;
-      const id = a.payload.doc['id'];
+      const id = a.payload.doc.id;
       return {id, ...data};
     }
   ))
 );
-
-  }
-
- 
-
+}
   getAllCustomers(){
     
     return this.customers;
