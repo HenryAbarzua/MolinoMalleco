@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { ProductsService } from '../../service/products.service';
-import { MAT_DIALOG_DATA,MatDialogRef} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA,MatDialogRef, MatDialog} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'formModal',
@@ -8,11 +9,10 @@ import { MAT_DIALOG_DATA,MatDialogRef} from '@angular/material/dialog';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-
+  isEdit = false;
   constructor(
     public products: ProductsService,
-    private dialogRef: MatDialogRef<FormComponent>,
-    @Inject(MAT_DIALOG_DATA) data
+    private dialogRef: MatDialogRef<FormComponent>
     
     ) { }
 
@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
   }
 
   onSaveForm(){
-    if(this.products.selected.id = null){
+    if(this.products.selected.id == null){
       let newProducts = {
         nombre: this.products.selected.nombre,
         cantidad: this.products.selected.cantidad

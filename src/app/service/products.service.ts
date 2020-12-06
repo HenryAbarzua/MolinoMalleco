@@ -15,7 +15,7 @@ export class ProductsService {
 public selected = {
     id:null,
     nombre:'',
-    cantidad:null
+    cantidad:0
 };
 
 

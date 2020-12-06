@@ -2,7 +2,7 @@ import { Component, OnInit , ViewChild} from '@angular/core';
 import { ProductsService } from '../../service/products.service';
 import { MatTableDataSource} from '@angular/material/table';
 import { MatSort} from '@angular/material/sort';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
 
 
@@ -48,12 +48,11 @@ export class ProducstListComponent implements OnInit {
   }
 
   openModal():void{
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.data ={
-      title:'Modal'
-    };
-    dialogConfig.autoFocus = true;
-    this.dialog.open(FormComponent,dialogConfig);
+    const dialogRef = this.dialog.open(FormComponent,{
+      width:'300px',
+      height:'300px'
+    });
+    
   }
 
   resetForm():void{
