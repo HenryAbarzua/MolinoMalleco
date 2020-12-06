@@ -24,7 +24,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
 import {ConfirmationDialogComponent} from "./Products/product-details/confirmation-dialog/confirmation-dialog.component";
 import { from } from 'rxjs';
 import { ListCustomersComponent } from './components/list-customers/list-customers.component';
@@ -81,7 +81,8 @@ import { FormComponent } from './Products/form/form.component'
     
   ],
   providers: [CustomersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:[FormComponent]
 
 })
 export class AppModule { }

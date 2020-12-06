@@ -15,7 +15,7 @@ export class ProductsService {
 public selected = {
     id:null,
     nombre:'',
-    cantidad:0
+    cantidad:null
 };
 
 
@@ -36,12 +36,16 @@ this.products = this.productsCollection.snapshotChanges().pipe(
     return this.products;
   }
 
-  editProducts(products:ProductsI){
+  editProducts(products:ProductsID){
     return this.productsCollection.doc(products.id).update(products);
   }
 
   deleteProducts(id: string){
       return this.productsCollection.doc(id).delete();
+  }
+
+  addProducts(products: ProductsI){
+    return this.productsCollection.add(products);
   }
 
 }
