@@ -7,7 +7,7 @@
   <table  mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
     <ng-container matColumnDef="nuevo">
       <th mat-header-cell *matHeaderCellDef>
-        <button mat-button color="accent" (click)="onEdit" >
+        <button mat-flat-button color="accent" (click)="openModal()" >
         
           
         Agregar Producto
@@ -30,7 +30,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button color="accent" (click)="onEdit(element)">
+        <button mat-flat-button color="primary" (click)="onEdit(element)">
           Editar
           <mat-icon>edit</mat-icon>
         </button>&nbsp;

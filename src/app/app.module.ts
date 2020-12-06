@@ -19,7 +19,7 @@ import { ClientDetailsComponent} from './Clientes/client-details/client-details.
 import { ClientsListComponent} from './Clientes/clients-list/clients-list.component';
 import { CreateClientComponent} from './Clientes/create-client/create-client.component';
 import { ClientViewComponent} from './client-view/client-view.component'
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -32,9 +32,10 @@ import {MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import {CustomersService} from './service/customers.service';
+import {MatCardModule} from '@angular/material/card';
 
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { FormComponent } from './Products/form/form.component'
+import { FormComponent } from './Products/form/form.component';
 
 @NgModule({
   declarations: [
@@ -72,8 +73,9 @@ import { FormComponent } from './Products/form/form.component'
     MatPaginatorModule,
     MatInputModule,
     MatSortModule,
-    MatIconModule
-   
+    MatIconModule,
+    MatFormFieldModule,
+    MatCardModule
  
     
     
