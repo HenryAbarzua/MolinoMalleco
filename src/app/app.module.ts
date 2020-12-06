@@ -35,6 +35,9 @@ import {CustomersService} from './service/customers.service';
 
 import {AngularFirestoreModule} from '@angular/fire/firestore'
 
+import { ChartsModule } from 'ng2-charts';
+import { LineaComponent } from './components/linea/linea.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore'
     CreateClientComponent,
     ConfirmationDialogComponent,
     ClientViewComponent,
-    ListCustomersComponent
+    ListCustomersComponent,
+    LineaComponent
 
   ],
   imports: [
@@ -67,7 +71,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore'
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule 
+    MatInputModule,
+    ChartsModule 
  
     
     
