@@ -36,7 +36,6 @@ import {MatCardModule} from '@angular/material/card';
 import {FormComponent} from './Products/form/form.component'
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
-
 import { ChartsModule } from 'ng2-charts';
 import { LineaComponent } from './components/linea/linea.component';
 
@@ -76,7 +75,8 @@ import { LineaComponent } from './components/linea/linea.component';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    ChartsModule 
+    ChartsModule,
+    MatIconModule 
  
     
     
