@@ -19,6 +19,7 @@ public selected = {
 };
 
 
+
   constructor(private readonly afs:AngularFirestore) { 
 this.productsCollection = afs.collection<ProductsI>('products');
 this.products = this.productsCollection.snapshotChanges().pipe(
