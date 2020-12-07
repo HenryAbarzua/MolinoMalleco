@@ -33,7 +33,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import {CustomersService} from './service/customers.service';
 import {MatCardModule} from '@angular/material/card';
-
+import {FormComponent} from './Products/form/form.component'
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 
 
@@ -56,6 +56,7 @@ import { LineaComponent } from './components/linea/linea.component';
     ClientViewComponent,
     ListCustomersComponent,
     LineaComponent,
+    FormComponent
 
 
   ],
@@ -84,7 +85,7 @@ import { LineaComponent } from './components/linea/linea.component';
   ],
   providers: [CustomersService],
   bootstrap: [AppComponent],
-  entryComponents:[]
+  entryComponents:[FormComponent]
 
 })
 export class AppModule { }
