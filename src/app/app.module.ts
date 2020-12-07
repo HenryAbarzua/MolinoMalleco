@@ -35,7 +35,10 @@ import {CustomersService} from './service/customers.service';
 import {MatCardModule} from '@angular/material/card';
 
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-import { FormComponent } from './Products/form/form.component';
+
+
+import { ChartsModule } from 'ng2-charts';
+import { LineaComponent } from './components/linea/linea.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +55,8 @@ import { FormComponent } from './Products/form/form.component';
     ConfirmationDialogComponent,
     ClientViewComponent,
     ListCustomersComponent,
-    FormComponent
-    
+    LineaComponent,
+
 
   ],
   imports: [
@@ -72,10 +75,7 @@ import { FormComponent } from './Products/form/form.component';
     MatTableModule,
     MatPaginatorModule,
     MatInputModule,
-    MatSortModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatCardModule
+    ChartsModule 
  
     
     
@@ -84,7 +84,7 @@ import { FormComponent } from './Products/form/form.component';
   ],
   providers: [CustomersService],
   bootstrap: [AppComponent],
-  entryComponents:[FormComponent]
+  entryComponents:[]
 
 })
 export class AppModule { }
