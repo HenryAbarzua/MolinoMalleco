@@ -8,6 +8,7 @@ import {CustomerI} from '../../models/customers.interface'
 import { CustomersService } from 'src/app/service/customers.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-list-customers',
@@ -17,9 +18,25 @@ import html2canvas from 'html2canvas';
 
 export class ListCustomersComponent implements OnInit {
   
-  displayedColumns: string[] = ['name', 'city', 'order'];
+  displayedColumns: string[] = ['name', 'city', 'order','cantidad'];
   dataSource = new MatTableDataSource();
+  private paginator: MatPaginator;
+  private sort: MatSort;
 
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+  }
+
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+  }
+
+  setDataSourceAttributes() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
 constructor(private customerService: CustomersService){
 this.downloadPDF();

@@ -14,14 +14,15 @@ export interface CustomerID extends CustomerI{id: string;}
 export class CustomersService {
  private customerCollection: AngularFirestoreCollection<CustomerI>
  customers: Observable<CustomerID[]>
-  constructor(private readonly afs:AngularFirestore) { 
-this.customerCollection = afs.collection<CustomerI>('customers');
+  constructor(private readonly db:AngularFirestore) { 
+this.customerCollection = db.collection<CustomerI>('customers');
 this.customers = this.customerCollection.snapshotChanges().pipe(
   map(actions => actions.map(
     a =>{
       const data = a.payload.doc.data() as CustomerI;
+      const cantidad = a.payload.doc.data().cantidad;
       const id = a.payload.doc.id;
-      return {id, ...data};
+      return {id, cantidad, ...data};
     }
   ))
 );
@@ -30,4 +31,9 @@ this.customers = this.customerCollection.snapshotChanges().pipe(
     
     return this.customers;
   }
+  
+  getCantidad(){
+    return this.db.collection('customers').doc('cantidad')
+  }
+
 }
