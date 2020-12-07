@@ -4,7 +4,7 @@ import { MatTableDataSource} from '@angular/material/table';
 import { MatSort} from '@angular/material/sort';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
-
+import {MatPaginator} from '@angular/material/paginator';
 
 
 
@@ -17,7 +17,23 @@ export class ProducstListComponent implements OnInit {
   displayedColumns: string[] = ['nombre', 'cantidad','actions','nuevo'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort) sort: MatSort;
+  private paginator: MatPaginator;
   
+
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+  }
+
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+  }
+
+  setDataSourceAttributes() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
  
   constructor(
     private productsService: ProductsService,
