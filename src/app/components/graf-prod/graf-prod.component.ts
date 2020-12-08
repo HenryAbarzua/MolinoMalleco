@@ -1,23 +1,28 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
-import {ListCustomersComponent} from '../list-customers/list-customers.component'
-import { CustomersService } from 'src/app/service/customers.service';
+import { Component, OnInit } from '@angular/core';
+import {ProducstListComponent} from '../../Products/producst-list/producst-list.component'
+import { ProductsService } from 'src/app/service/products.service';
 import { ChartDataSets, ChartOptions, ChartType,Chart } from 'chart.js';
 import { Color, BaseChartDirective, Label } from 'ng2-charts';
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore'
-
+import {ProgressSpinnerMode} from '@angular/material/progress-spinner';
+import {ThemePalette} from '@angular/material/core';
 @Component({
-  selector: 'app-linea',
-  templateUrl: './linea.component.html',
-  styleUrls: ['./linea.component.scss']
+  selector: 'app-graf-prod',
+  templateUrl: './graf-prod.component.html',
+  styleUrls: ['./graf-prod.component.scss']
 })
-export class LineaComponent implements OnInit {
+export class GrafProdComponent implements OnInit {
 
-  customers:any[] = [];
+ 
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'determinate';
+  value = 50;
+  products:any[] = [];
   cantidad: any;
   name: any;
   DATA: any[] = [];
-  public lineChartData: ChartDataSets[] = [{data: this.DATA, label:'Cantidad'}]
+  public lineChartData: ChartDataSets[] = [{data: this.DATA, label:'Cantidad(Kg)'}]
   public lineChartLabels: Label[] = [];
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
@@ -29,7 +34,7 @@ export class LineaComponent implements OnInit {
       yAxes: [
         {
           ticks: {
-            max : 300,
+            max : 1000,
             min : 0,
           }
         }
@@ -65,22 +70,19 @@ export class LineaComponent implements OnInit {
   public lineChartType: ChartType = 'bar';
   public lineChartPlugins = [];
 
-  
 
-  constructor(private db:AngularFirestore,private customerService: CustomersService) {
-  
-  }
+  constructor(private productService: ProductsService) { }
 
   ngOnInit(): void {
-    this.customerService.getAllCustomers().subscribe((res: any[])=>{
-      this.customers = res;
+    this.productService.getAllProducts().subscribe((res: any[])=>{
+      this.products = res;
         console.log(res)
-    if(this.customers.indexOf.apply(['name']) != null){
-      this.customers.forEach(item => {
-        this.lineChartLabels.push(item.name);
+    if(this.products.indexOf.apply(['nombre']) != null){
+      this.products.forEach(item => {
+        this.lineChartLabels.push(item.nombre);
       });
-      if(this.customers.indexOf.apply(['cantidad'])!= null){
-      this.customers.forEach(item => {
+      if(this.products.indexOf.apply(['cantidad'])!= null){
+      this.products.forEach(item => {
         this.DATA.push(item.cantidad);
       });
     }else{
@@ -91,6 +93,7 @@ export class LineaComponent implements OnInit {
       this.DATA.push(0)
       console.log('no cargan datos desde la tabla')
     }
+    
   }
       );
       

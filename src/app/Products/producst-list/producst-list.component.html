@@ -1,7 +1,13 @@
+<div *ngIf="!load" >
+  <mat-spinner style="margin:0 auto;"></mat-spinner>
+</div>
+<div *ngIf="load">
 <mat-form-field>
   <mat-label></mat-label>
-  
-  <input matInput (keyup)="filtrar($event)" placeholder="buscar">
+  <div>
+    
+    <mat-icon style="margin-top: 17px; margin-left: 160px; position:absolute;">search</mat-icon><br><input matInput (keyup)="filtrar($event)" placeholder="buscar" aria-invalid="false" aria-required="false" >
+</div>
 </mat-form-field>
 <div class="mat-elevation-z8">
   <table  mat-table [dataSource]="dataSource"  class="mat-elevation-z8" matSort>
@@ -45,4 +51,10 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <div class="container">
+    <h1>Grafico</h1>
+    <hr>
+    <app-graf-prod></app-graf-prod>
+  </div>
+</div>
 </div>

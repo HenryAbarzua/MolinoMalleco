@@ -35,9 +35,10 @@ import {CustomersService} from './service/customers.service';
 import {MatCardModule} from '@angular/material/card';
 import {FormComponent} from './Products/form/form.component'
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-
+import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
 import { ChartsModule } from 'ng2-charts';
 import { LineaComponent } from './components/linea/linea.component';
+import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { LineaComponent } from './components/linea/linea.component';
     ClientViewComponent,
     ListCustomersComponent,
     LineaComponent,
-    FormComponent
+    FormComponent,
+    GrafProdComponent
 
 
   ],
@@ -76,7 +78,8 @@ import { LineaComponent } from './components/linea/linea.component';
     MatPaginatorModule,
     MatInputModule,
     ChartsModule,
-    MatIconModule 
+    MatIconModule,
+    MatProgressSpinnerModule 
  
     
     
