@@ -5,6 +5,8 @@ import { MatSort} from '@angular/material/sort';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FormComponent } from '../form/form.component';
 import {MatPaginator} from '@angular/material/paginator';
+import {FormAgregarComponent} from '../form/form-agregar/form-agregar.component';
+import {ConfirmationDialogComponent} from "../../Clientes/client-details/confirmation-dialog/confirmation-dialog.component";
 
 
 
@@ -59,17 +61,35 @@ export class ProducstListComponent implements OnInit {
     }
   }
 
+  getElement(element){
+    this.resetForm();
+    this.openModalAgregar();
+    if (element){
+      this.productsService.selected = element;
+    }
+  }
+
   
   onDelete(id: string){
     this.productsService.deleteProducts(id);
   }
 
+
+  newProduct():void{
+    this.resetForm();
+    this.openModal();
+  }
   openModal():void{
-    const dialogRef = this.dialog.open(FormComponent,{
-      width:'300px',
-      height:'300px'
+    const dialogRef = this.dialog.open(FormComponent,{});
+   dialogRef.afterClosed().subscribe(res => {
+     console.log(res);
+   })
+}
+//TODO crear nuevo modal
+  openModalAgregar():void{
+    const dialogRef = this.dialog.open(FormAgregarComponent,{ 
+      closeOnNavigation: true
     });
-    
   }
 
   resetForm():void{
@@ -77,6 +97,23 @@ export class ProducstListComponent implements OnInit {
     this.productsService.selected.cantidad=0;
     this.productsService.selected.id=null;
   }
+
+  ShowDialog(id): void {
+    this.dialog
+      .open(ConfirmationDialogComponent, {
+        data: `¿Esta Seguro que desea Borrar este Producto?`
+      })
+      .afterClosed()
+      .subscribe((confirmado: Boolean) => {
+        if (confirmado) {
+          this.onDelete(id);
+          alert("Cliente Eliminado");
+        } else {
+         
+        }
+      });
+  }
+  
 }
 
 

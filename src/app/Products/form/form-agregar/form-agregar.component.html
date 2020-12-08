@@ -1,0 +1,12 @@
+<div class="container">
+    <mat-form-field>
+      <input readonly matInput placeholder="Nombre" name="nombre" [(ngModel)]="this.products.selected.nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="number" matInput placeholder="Cantidad" name="cantidad" [(ngModel)]="cantidad">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onSaveForm()">
+      Save
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>

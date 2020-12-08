@@ -33,11 +33,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import {CustomersService} from './service/customers.service';
 import {MatCardModule} from '@angular/material/card';
-import {FormComponent} from './Products/form/form.component'
+import {FormComponent} from './Products/form/form.component';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
-
 import { ChartsModule } from 'ng2-charts';
 import { LineaComponent } from './components/linea/linea.component';
+import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +55,8 @@ import { LineaComponent } from './components/linea/linea.component';
     ClientViewComponent,
     ListCustomersComponent,
     LineaComponent,
-    FormComponent
+    FormComponent,
+    FormAgregarComponent
 
 
   ],
@@ -85,7 +86,7 @@ import { LineaComponent } from './components/linea/linea.component';
   ],
   providers: [CustomersService],
   bootstrap: [AppComponent],
-  entryComponents:[FormComponent]
+  entryComponents:[FormComponent,FormAgregarComponent]
 
 })
 export class AppModule { }

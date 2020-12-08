@@ -1,5 +1,5 @@
-import { Component, OnInit, Inject } from "@angular/core";
-import { ProductsService } from "../../service/products.service";
+import { Component, OnInit } from '@angular/core';
+import { ProductsService } from "../../../service/products.service";
 import {
   MAT_DIALOG_DATA,
   MatDialogRef,
@@ -7,19 +7,20 @@ import {
 } from "@angular/material/dialog";
 
 @Component({
-  selector: "formModal",
-  templateUrl: "./form.component.html",
-  styleUrls: ["./form.component.scss"],
+  selector: 'app-form-agregar',
+  templateUrl: './form-agregar.component.html',
+  styleUrls: ['./form-agregar.component.scss']
 })
-export class FormComponent implements OnInit {
-  isEdit = false;
-  read = false;
+export class FormAgregarComponent implements OnInit {
+  cantidad: number = 0;
+
   constructor(
     public products: ProductsService,
-    private dialogRef: MatDialogRef<FormComponent>
-  ) {}
+    private dialogRef: MatDialogRef<FormAgregarComponent>
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   onSaveForm() {
     if (this.products.selected.id == null) {
@@ -29,6 +30,8 @@ export class FormComponent implements OnInit {
       };
       this.products.addProducts(newProducts);
     } else {
+      let num = parseInt(this.products.selected.cantidad.toString()) + this.cantidad
+      this.products.selected.cantidad = num
       this.products.editProducts(this.products.selected);
     }
     this.close();
