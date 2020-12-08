@@ -17,6 +17,7 @@ import {ConfirmationDialogComponent} from "../../Clientes/client-details/confirm
   styleUrls: ['./producst-list.component.scss']
 })
 export class ProducstListComponent implements OnInit {
+  public load: Boolean = false;
   displayedColumns: string[] = ['nombre', 'cantidad','actions','nuevo'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort) sort: MatSort;
@@ -43,7 +44,9 @@ export class ProducstListComponent implements OnInit {
     private dialog: MatDialog){ }
   ngOnInit() {
     this.productsService.getAllProducts().subscribe(res => this.dataSource.data = res);
-    
+    setTimeout(()=>{
+      this.load = true;
+    }, 2000);
   }
   ngAfterViewInit(){
     this.dataSource.sort = this.sort;

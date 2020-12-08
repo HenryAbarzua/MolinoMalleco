@@ -30,6 +30,7 @@ this.customers = this.customerCollection.snapshotChanges().pipe(
   getAllCustomers(){
     
     return this.customers;
+    
   }
   
   getCantidad(){

@@ -38,6 +38,8 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { ChartsModule } from 'ng2-charts';
 import { LineaComponent } from './components/linea/linea.component';
 import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.component';
+import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
+import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.
     ListCustomersComponent,
     LineaComponent,
     FormComponent,
-    FormAgregarComponent
+    FormAgregarComponent,
+    GrafProdComponent
 
 
   ],
@@ -77,7 +80,8 @@ import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.
     MatPaginatorModule,
     MatInputModule,
     ChartsModule,
-    MatIconModule 
+    MatIconModule,
+    MatProgressSpinnerModule 
  
     
     
