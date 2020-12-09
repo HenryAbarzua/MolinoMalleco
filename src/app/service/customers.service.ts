@@ -6,7 +6,9 @@ import { Action } from 'rxjs/internal/scheduler/Action'
 import {map} from 'rxjs/operators'
 import { CustomerI}from '../models/customers.interface'
 
-export interface CustomerID extends CustomerI{id: string;}
+export interface CustomerID extends CustomerI{
+  id: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,16 @@ export interface CustomerID extends CustomerI{id: string;}
 export class CustomersService {
  private customerCollection: AngularFirestoreCollection<CustomerI>
  customers: Observable<CustomerID[]>
+ public selected = {
+  id: null,
+  nombre: "",
+  region: "",
+  ciudad: "",
+  tipoProducto: "",
+  cantidad: 0,
+};
   constructor(private readonly db:AngularFirestore) { 
-this.customerCollection = db.collection<CustomerI>('customers');
+this.customerCollection = db.collection<CustomerI>('proveedores');
 this.customers = this.customerCollection.snapshotChanges().pipe(
   map(actions => actions.map(
     a =>{
@@ -27,14 +37,21 @@ this.customers = this.customerCollection.snapshotChanges().pipe(
   ))
 );
 }
-  getAllCustomers(){
-    
-    return this.customers;
-    
+  getAllProveedores(){
+    return this.customers; 
   }
   
   getCantidad(){
     return this.db.collection('customers').doc('cantidad')
+  }
+  editProveedores(proveedores: CustomerID) {
+    return this.customerCollection.doc(proveedores.id).update(proveedores);
+  }
+  deleteProveedores(id: string) {
+    return this.customerCollection.doc(id).delete();
+  }
+  addProveedores(proveedores: CustomerI) {
+    return this.customerCollection.add(proveedores);
   }
 
 }

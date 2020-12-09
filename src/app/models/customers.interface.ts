@@ -1,6 +1,7 @@
 export interface CustomerI{ 
-    name:string;
-    city:string;
-    order:string;
+    nombre:string;
+    region:string;
+    ciudad:string;
+    tipoProducto:string;
     cantidad:number;
 }

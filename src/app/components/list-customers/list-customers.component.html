@@ -1,42 +1,78 @@
+<div *ngIf="!load" >
+  <mat-spinner style="margin:0 auto;"></mat-spinner>
+</div>
+<div *ngIf="load">
 <mat-form-field>
-    <mat-label></mat-label>
+  <mat-label></mat-label>
+  <h1>Proveedores</h1>
+  <div>
+    <mat-icon style="margin-top: 17px; margin-left: 160px; position:absolute;">search</mat-icon><br><input matInput (keyup)="filtrar($event)" placeholder="buscar" aria-invalid="false" aria-required="false" >
+</div>
+<div><button style="margin-top: 40px; margin-left: 920px; position:absolute;" mat-flat-button color="accent" (click)="newProduct()" >
+  Agregar Proveedor
+  <mat-icon>save</mat-icon>
+</button></div>
+
+</mat-form-field>
+<div class="mat-elevation-z8" id="htmlData2">
+  <table  mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
     
-    <input matInput (keyup)="filtrar($event)" placeholder="buscar">
-  </mat-form-field>
-  <div class="mat-elevation-z8"id="htmlData">
-    <table  mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
-  
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef>Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef> City </th>
-        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="order">
-        <th mat-header-cell *matHeaderCellDef> Order </th>
-        <td mat-cell *matCellDef="let element"> {{element.order}} </td>
-      </ng-container>
-      <ng-container matColumnDef="cantidad">
-        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
-        <td mat-cell *matCellDef="let element"> {{element.cantidad}}Kg</td>
-      </ng-container>
-  
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-    <div>
-      <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF()">Download PDF</button>
-    </div>
-    <div class="container">
-      <h1>Grafico</h1>
-      <hr>
-      <app-linea></app-linea>
-    </div>
+
+    <ng-container matColumnDef="nombre">
     
+      <th mat-header-cell *matHeaderCellDef>Nombre del Proveedor</th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="region">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Region del Proovedor </th>
+      <td mat-cell *matCellDef="let element" style="width: 150px;"> {{element.region}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="ciudad">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ciudad del Proovedor </th>
+      <td mat-cell *matCellDef="let element" style="width: 150px;"> {{element.ciudad}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoProducto">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Producto </th>
+      <td mat-cell *matCellDef="let element" style="width: 150px;"> {{element.tipoProducto}}</td>
+    </ng-container>
+    <ng-container matColumnDef="cantidad">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad del Producto </th>
+      <td mat-cell *matCellDef="let element" style="width: 150px;"> {{element.cantidad}}Kg</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions" >
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element" style="width: 358px;">
+        <button mat-flat-button color="accent" (click)="getElement(element)">
+          Agregar
+          <mat-icon>add</mat-icon>
+        </button>&nbsp;
+        <button mat-flat-button color="primary" (click)="onEdit(element)">
+          Editar
+          <mat-icon>edit</mat-icon>
+        </button>&nbsp;
+        <button mat-flat-button color="warn" (click)="onDelete(element.id)">
+          Eliminar
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <div>
+    <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF()">Download PDF</button> 
   </div>
+  
+  <div class="container">
+    <h1>Grafico</h1>
+    <hr>
+    <app-graf-prod></app-graf-prod>
+  </div>
+</div>
+</div>

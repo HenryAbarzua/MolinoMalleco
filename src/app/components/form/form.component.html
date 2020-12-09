@@ -1,0 +1,32 @@
+<div class="container">
+    <mat-form-field>
+      <input matInput placeholder="Nombre" name="nombre" [(ngModel)]="this.products.selected.nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Cantidad" name="cantidad" [(ngModel)]="this.products.selected.cantidad">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Seleccionar Región" multiple>
+            <mat-option value="tarapaca">I Región de Tarapacá</mat-option>
+            <mat-option value="antofagasta">II Región de Antofagasta</mat-option>
+            <mat-option value="atacama">III Región de Atacama</mat-option>
+            <mat-option value="coquimbo">IV Región de Coquimbo</mat-option>
+            <mat-option value="valparaiso">V Región de Valparaíso</mat-option>
+            <mat-option value="ohiggins">VI Región del Libertador General Bernardo O’Higgins</mat-option>
+            <mat-option value="maule">VII Región del Maule</mat-option>
+            <mat-option value="biobio">VIII Región del Biobío</mat-option>
+            <mat-option value="araucania">IX Región de La Araucanía</mat-option>
+            <mat-option value="lagos">X Región de Los Lagos</mat-option>
+            <mat-option value="aysen">XI Región Aysén del General Carlos Ibáñez del Campo</mat-option>
+            <mat-option value="magallanes">XII Región de Magallanes y Antártica Chilena</mat-option>
+            <mat-option value="metropolitana">Región Metropolitana de Santiago</mat-option>
+            <mat-option value="rios">XIV Región de Los Ríos</mat-option>
+            <mat-option value="arica">XV Región de Arica y Parinacota</mat-option>
+            <mat-option value="ñuble">XVI Región de Ñuble</mat-option>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onSaveForm()">
+      Save
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+  

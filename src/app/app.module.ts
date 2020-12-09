@@ -40,7 +40,7 @@ import { LineaComponent } from './components/linea/linea.component';
 import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.component';
 import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
 import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
-
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +81,8 @@ import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
     MatInputModule,
     ChartsModule,
     MatIconModule,
-    MatProgressSpinnerModule 
+    MatProgressSpinnerModule,
+    MatSelectModule
  
     
     

@@ -72,7 +72,7 @@ export class LineaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customerService.getAllCustomers().subscribe((res: any[])=>{
+    this.customerService.getAllProveedores().subscribe((res: any[])=>{
       this.customers = res;
         console.log(res)
     if(this.customers.indexOf.apply(['name']) != null){
