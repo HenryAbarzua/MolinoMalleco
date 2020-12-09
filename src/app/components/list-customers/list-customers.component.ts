@@ -9,11 +9,12 @@ import { CustomersService } from 'src/app/service/customers.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {MatSort} from '@angular/material/sort';
-import Swal from 'sweetalert2';
+import {Swal} from 'sweetalert2';
 
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
+import {ExcelService} from '../../service/ExcelService'
 @Component({
   selector: 'app-list-customers',
   templateUrl: './list-customers.component.html',
@@ -23,6 +24,8 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angul
 export class ListCustomersComponent implements OnInit {
   public load: Boolean = false;
   displayedColumns: string[] = ['nombre', 'region', 'ciudad','tipoProducto','cantidad','actions'];
+  DATA: any[] = [];
+  customers: any[] = [];
   dataSource = new MatTableDataSource();
   private paginator: MatPaginator;
   private sort: MatSort;
@@ -45,15 +48,21 @@ export class ListCustomersComponent implements OnInit {
 
 constructor(
   private customerService: CustomersService,
-  private dialog: MatDialog){
-this.downloadPDF();
-}
+  private dialog: MatDialog,private ExcelService: ExcelService){
+    this.downloadPDF();
+  }
 
   ngOnInit() {
-    this.customerService.getAllProveedores().subscribe(res => this.dataSource.data = res);
     setTimeout(()=>{
       this.load = true;
     }, 2000);
+    this.customerService.getAllProveedores().subscribe((res : any[])=>{
+      this.customers = res
+      this.customers.forEach(item =>{
+        this.DATA.push(item)
+      })
+    });
+    
   }
   public downloadPDF(): void {
     const DATA = document.getElementById('htmlData')
@@ -116,7 +125,11 @@ onDelete(id: string){
     }
   })
 
-}
+  }  
+  exportAsXLSX():void{
+    this.ExcelService.exportAsExcelFile(this.DATA, 'customer_data');
+  }
+
 
  newProduct():void{
 //   this.resetForm();

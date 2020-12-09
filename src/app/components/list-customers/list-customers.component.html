@@ -19,6 +19,45 @@
     
 
     <ng-container matColumnDef="nombre">
+    <input matInput (keyup)="filtrar($event)" placeholder="buscar">
+  </mat-form-field>
+  <div class="mat-elevation-z8"id="htmlData">
+    <table  mat-table [dataSource]="dataSource"  class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="order">
+        <th mat-header-cell *matHeaderCellDef> Order </th>
+        <td mat-cell *matCellDef="let element"> {{element.order}} </td>
+      </ng-container>
+      <ng-container matColumnDef="cantidad">
+        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <td mat-cell *matCellDef="let element"> {{element.cantidad}}Kg</td>
+      </ng-container>
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <div>
+      <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF()">Download PDF</button>
+    </div>
+    <button (click)="exportAsXLSX()">
+      <mat-icon>get_app</mat-icon>Download Excel</button>
+    <div class="container">
+      <h1>Grafico</h1>
+      <hr>
+      <app-linea></app-linea>
+    </div>
     
       <th mat-header-cell *matHeaderCellDef>Nombre del Proveedor</th>
       <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>

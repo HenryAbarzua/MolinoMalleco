@@ -41,6 +41,8 @@ import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.
 import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
 import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
 import { MatSelectModule } from '@angular/material/select';
+import {ExcelService} from './service/ExcelService'
+import {}
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +91,7 @@ import { MatSelectModule } from '@angular/material/select';
     
     
   ],
-  providers: [CustomersService],
+  providers: [CustomersService,ExcelService],
   bootstrap: [AppComponent],
   entryComponents:[FormComponent,FormAgregarComponent]
 

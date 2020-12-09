@@ -5,6 +5,7 @@ import {
   MatDialogRef,
   MatDialog,
 } from "@angular/material/dialog";
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-form-agregar',
@@ -33,6 +34,7 @@ export class FormAgregarComponent implements OnInit {
       let num = parseInt(this.products.selected.cantidad.toString()) + this.cantidad
       this.products.selected.cantidad = num
       this.products.editProducts(this.products.selected);
+     
     }
     this.close();
   }
