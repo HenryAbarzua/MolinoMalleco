@@ -50,7 +50,8 @@ constructor(
   private customerService: CustomersService,
   private dialog: MatDialog,
   private ExcelService: ExcelService){
-this.downloadPDF();
+    this.downloadPDF2();
+
 }
 
   ngOnInit() {
@@ -60,13 +61,15 @@ this.downloadPDF();
       this.customers.forEach(item =>{
         this.DATA.push(item)
       })
+    
     });
     setTimeout(()=>{
       this.load = true;
     }, 2000);
   }
-  public downloadPDF(): void {
-    const DATA = document.getElementById('htmlData')
+
+  public downloadPDF2(): void {
+    const DATA = document.getElementById('htmlData2')
     const doc = new jsPDF('p', 'pt' , 'a4');
     const options ={
       background: 'white',

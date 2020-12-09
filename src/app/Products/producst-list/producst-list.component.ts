@@ -46,7 +46,7 @@ export class ProducstListComponent implements OnInit {
     private productsService: ProductsService,
     private dialog: MatDialog
     ){ 
-      this.downloadPDF2() 
+      this.downloadPDF(); 
     }
   ngOnInit() {
     this.productsService.getAllProducts().subscribe(res => this.dataSource.data = res);
@@ -54,8 +54,8 @@ export class ProducstListComponent implements OnInit {
       this.load = true;
     }, 2000);
   }
-  public downloadPDF2(): void {
-    const DATA = document.getElementById('htmlData2')
+  public downloadPDF(): void {
+    const DATA = document.getElementById('htmlData')
     const doc = new jsPDF('p', 'pt' , 'a4');
     const options ={
       background: 'white',
@@ -71,7 +71,7 @@ export class ProducstListComponent implements OnInit {
       doc.addImage(img,'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) =>{
-      docResult.save(`${new Date().toISOString()}_MolinoMallecoCustomers.pdf`);
+      docResult.save(`${new Date().toISOString()}_MolinoMallecoProduct.pdf`);
     });
   }
   ngAfterViewInit(){
