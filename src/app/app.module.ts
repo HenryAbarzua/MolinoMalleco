@@ -40,7 +40,7 @@ import { LineaComponent } from './components/linea/linea.component';
 import { FormAgregarComponent } from './Products/form/form-agregar/form-agregar.component';
 import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
 import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
-
+import {ExcelService} from './service/ExcelService'
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +88,7 @@ import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
     
     
   ],
-  providers: [CustomersService],
+  providers: [CustomersService,ExcelService],
   bootstrap: [AppComponent],
   entryComponents:[FormComponent,FormAgregarComponent]
 

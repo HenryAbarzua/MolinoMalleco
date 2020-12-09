@@ -72,10 +72,14 @@ export class GrafProdComponent implements OnInit {
 
 
   constructor(private productService: ProductsService) { }
-
+ 
   ngOnInit(): void {
+   
     this.productService.getAllProducts().subscribe((res: any[])=>{
+      this.DATA.length = 0;
+      this.lineChartLabels.length = 0;
       this.products = res;
+      
         console.log(res)
     if(this.products.indexOf.apply(['nombre']) != null){
       this.products.forEach(item => {
@@ -85,6 +89,7 @@ export class GrafProdComponent implements OnInit {
       this.products.forEach(item => {
         this.DATA.push(item.cantidad);
       });
+      
     }else{
       this.lineChartLabels.push("Sin ingresos");
       console.log('no carga ingresos')
@@ -93,6 +98,7 @@ export class GrafProdComponent implements OnInit {
       this.DATA.push(0)
       console.log('no cargan datos desde la tabla')
     }
+    
     
   }
       );

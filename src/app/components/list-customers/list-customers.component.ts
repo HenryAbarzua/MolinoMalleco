@@ -9,7 +9,7 @@ import { CustomersService } from 'src/app/service/customers.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import {MatSort} from '@angular/material/sort';
-
+import {ExcelService} from '../../service/ExcelService'
 @Component({
   selector: 'app-list-customers',
   templateUrl: './list-customers.component.html',
@@ -17,7 +17,8 @@ import {MatSort} from '@angular/material/sort';
 })
 
 export class ListCustomersComponent implements OnInit {
-  
+  DATA: any[] = [];
+  customers: any[] = [];
   displayedColumns: string[] = ['name', 'city', 'order','cantidad'];
   dataSource = new MatTableDataSource();
   private paginator: MatPaginator;
@@ -38,12 +39,18 @@ export class ListCustomersComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-constructor(private customerService: CustomersService){
+constructor(private customerService: CustomersService,
+                 private ExcelService: ExcelService){
 this.downloadPDF();
 }
 
   ngOnInit() {
-    this.customerService.getAllCustomers().subscribe(res => this.dataSource.data = res);
+    this.customerService.getAllCustomers().subscribe((res : any[])=>{
+      this.customers = res
+      this.customers.forEach(item =>{
+        this.DATA.push(item)
+      })
+    });
     
   }
   public downloadPDF(): void {
@@ -70,6 +77,9 @@ this.downloadPDF();
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
   }  
+  exportAsXLSX():void{
+    this.ExcelService.exportAsExcelFile(this.DATA, 'customer_data');
+  }
 }
 
 
