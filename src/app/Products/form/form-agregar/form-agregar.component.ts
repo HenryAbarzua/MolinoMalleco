@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "../../../service/products.service";
-import {
-  MAT_DIALOG_DATA,
-  MatDialogRef,
-  MatDialog,
-} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA,MatDialogRef,MatDialog,} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-form-agregar',

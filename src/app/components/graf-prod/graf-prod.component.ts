@@ -75,6 +75,8 @@ export class GrafProdComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((res: any[])=>{
+      this.DATA.length = 0;
+      this.lineChartLabels.length = 0;
       this.products = res;
         console.log(res)
     if(this.products.indexOf.apply(['nombre']) != null){
