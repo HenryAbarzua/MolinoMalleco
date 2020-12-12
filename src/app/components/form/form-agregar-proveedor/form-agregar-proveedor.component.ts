@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomersService } from '../../service/customers.service';
-import {MAT_DIALOG_DATA,MatDialogRef,MatDialog,} from "@angular/material/dialog";
+import {CustomersService} from '../../../service/customers.service';
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-form-proveedores',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  selector: 'app-form-agregar-proveedor',
+  templateUrl: './form-agregar-proveedor.component.html',
+  styleUrls: ['./form-agregar-proveedor.component.scss']
 })
-export class FormComponentProveedores implements OnInit {
-
+export class FormAgregarProveedorComponent implements OnInit {
+  cantidad: number = 0;
   constructor(
     public proveedores: CustomersService,
-    private dialogRef: MatDialogRef<FormComponentProveedores>
+    private dialogRef: MatDialogRef<FormAgregarProveedorComponent>
   ) { }
 
   ngOnInit(): void {
@@ -28,6 +28,8 @@ export class FormComponentProveedores implements OnInit {
       };
       this.proveedores.addProveedores(newProducts);
     } else {
+      let num = parseInt(this.proveedores.selected.cantidad.toString()) + this.cantidad
+      this.proveedores.selected.cantidad = num
       this.proveedores.editProveedores(this.proveedores.selected);
     }
     this.close();

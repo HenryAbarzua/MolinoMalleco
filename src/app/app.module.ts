@@ -42,6 +42,10 @@ import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
 import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ExcelService } from './service/ExcelService';
+import {FormComponentProveedores} from './components/form/form.component';
+import { FormAgregarProveedorComponent } from './components/form/form-agregar-proveedor/form-agregar-proveedor.component';
+import { FormClientsComponent } from './Clientes/form-clients/form-clients.component';
+
 
 @NgModule({
   declarations: [
@@ -61,7 +65,10 @@ import { ExcelService } from './service/ExcelService';
     LineaComponent,
     FormComponent,
     FormAgregarComponent,
-    GrafProdComponent
+    FormComponentProveedores,
+    GrafProdComponent,
+    FormAgregarProveedorComponent,
+    FormClientsComponent
 
 
   ],
@@ -93,7 +100,7 @@ import { ExcelService } from './service/ExcelService';
   ],
   providers: [CustomersService,ExcelService],
   bootstrap: [AppComponent],
-  entryComponents:[FormComponent,FormAgregarComponent]
+  entryComponents:[FormComponent,FormAgregarComponent,FormComponentProveedores,FormAgregarProveedorComponent,FormClientsComponent]
 
 })
 export class AppModule { }

@@ -8,7 +8,7 @@
   <div>
     <mat-icon style="margin-top: 17px; margin-left: 160px; position:absolute;">search</mat-icon><br><input matInput (keyup)="filtrar($event)" placeholder="buscar" aria-invalid="false" aria-required="false" >
 </div>
-<div><button style="margin-top: 40px; margin-left: 920px; position:absolute;" mat-flat-button color="accent" (click)="newProduct()" >
+<div><button style="margin-top: 40px; margin-left: 920px; position:absolute;" mat-flat-button color="accent" (click)="newProveedor()" >
   Agregar Proveedor
   <mat-icon>save</mat-icon>
 </button></div>
@@ -19,7 +19,6 @@
     
 
     <ng-container matColumnDef="nombre">
-    
       <th mat-header-cell *matHeaderCellDef>Nombre del Proveedor</th>
       <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
     </ng-container>

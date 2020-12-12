@@ -1,18 +1,20 @@
-import { Component, AfterViewInit,ViewChild, Input, OnInit } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { Component, AfterViewInit, ViewChild, Input, OnInit } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { from } from 'rxjs';
 import { Product } from '../.././Products/Product';
 import { ProductService } from '../../Products/product.service';
-import {CustomerI} from '../../models/customers.interface'
+import { CustomerI } from '../../models/customers.interface'
 import { CustomersService } from 'src/app/service/customers.service';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
 import Swal from 'sweetalert2';
-import {ExcelService} from '../../service/ExcelService';
+import { ExcelService } from '../../service/ExcelService';
+import { FormComponentProveedores } from '../form/form.component';
+import {FormAgregarProveedorComponent} from '../form/form-agregar-proveedor/form-agregar-proveedor.component';
 
-import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class ListCustomersComponent implements OnInit {
   DATA: any[] = [];
   customers: any[] = [];
   public load: Boolean = false;
-  displayedColumns: string[] = ['nombre', 'region', 'ciudad','tipoProducto','cantidad','actions'];
+  displayedColumns: string[] = ['nombre', 'region', 'ciudad', 'tipoProducto', 'cantidad', 'actions'];
   dataSource = new MatTableDataSource();
   private paginator: MatPaginator;
   private sort: MatSort;
@@ -46,45 +48,45 @@ export class ListCustomersComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-constructor(
-  private customerService: CustomersService,
-  private dialog: MatDialog,
-  private ExcelService: ExcelService){
+  constructor(
+    private customerService: CustomersService,
+    private dialog: MatDialog,
+    private ExcelService: ExcelService) {
     this.downloadPDF2();
 
-}
+  }
 
   ngOnInit() {
     this.customerService.getAllProveedores().subscribe(res => this.dataSource.data = res)
-    this.customerService.getAllProveedores().subscribe((res2 : any[])=>{
+    this.customerService.getAllProveedores().subscribe((res2: any[]) => {
       this.customers = res2
-      this.customers.forEach(item =>{
+      this.customers.forEach(item => {
         this.DATA.push(item)
       })
-    
+
     });
-    setTimeout(()=>{
+    setTimeout(() => {
       this.load = true;
     }, 2000);
   }
 
   public downloadPDF2(): void {
     const DATA = document.getElementById('htmlData2')
-    const doc = new jsPDF('p', 'pt' , 'a4');
-    const options ={
+    const doc = new jsPDF('p', 'pt', 'a4');
+    const options = {
       background: 'white',
       scale: 3
     };
-    html2canvas(DATA, options).then((canvas)=>{
+    html2canvas(DATA, options).then((canvas) => {
       const img = canvas.toDataURL('image/PNG');
-      const bufferX=15;
-      const bufferY=15;
+      const bufferX = 15;
+      const bufferY = 15;
       const imgProps = (doc as any).getImageProperties(img);
-      const pdfWidth = doc.internal.pageSize.getWidth() -2 * bufferX;
+      const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      doc.addImage(img,'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+      doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
-    }).then((docResult) =>{
+    }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}_MolinoMallecoCustomers.pdf`);
     });
   }
@@ -94,88 +96,75 @@ constructor(
   }
 
 
-onEdit(element){
-  //this.resetForm();
-   //this.openModal();
-  if (element){
-    this.customerService.selected = element;
- }
- }
-
- getElement(element){
-//   this.resetForm();
-//   this.openModalAgregar();
-   if (element){
-     this.customerService.selected = element;
-   }
- }
-
-onDelete(id: string){
-  Swal.fire({
-    title:'¿Estas Seguro?',
-    text:'Elimanaras completamente este Producto!',
-    icon:'warning',
-    showCancelButton:true,
-    confirmButtonColor:'#3085d6',
-    cancelButtonColor:'#d33',
-    confirmButtonText:'Si, Quiero Eliminarlo!'
-  }).then(result =>{
-    if(result.value){
-      this.customerService.deleteProveedores(id).then(()=>{
-        Swal.fire('Borrado!','Se ha Eliminado Correctamente el Producto', 'success');
-      }).catch((error) =>{
-        Swal.fire('Error!', 'Ha ocurrido un error y no se podido Eliminar','error');
-      })
+  onEdit(element) {
+    this.resetForm();
+    this.openModal();
+    if (element) {
+      this.customerService.selected = element;
     }
-  })
+  }
 
-}
+  getElement(element) {
+       this.resetForm();
+       this.openModalAgregar();
+    if (element) {
+      this.customerService.selected = element;
+    }
+  }
 
- newProduct():void{
-//   this.resetForm();
-//   this.openModal();
-// }
-// openModal():void{
-//   const dialogRef = this.dialog.open(FormComponent,{
-//     data: 'Estas seguro que quieres hacer esto?'
-//   });
-//  dialogRef.afterClosed().subscribe(res => {
-//    console.log(res);
-//    if(res){
+  onDelete(id: string) {
+    Swal.fire({
+      title: '¿Estas Seguro?',
+      text: 'Elimanaras completamente este Producto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, Quiero Eliminarlo!'
+    }).then(result => {
+      if (result.value) {
+        this.customerService.deleteProveedores(id).then(() => {
+          Swal.fire('Borrado!', 'Se ha Eliminado Correctamente el Producto', 'success');
+        }).catch((error) => {
+          Swal.fire('Error!', 'Ha ocurrido un error y no se podido Eliminar', 'error');
+        })
+      }
+    })
 
-//    }
-//  })
- }
- openModalAgregar():void{
-//   const dialogRef = this.dialog.open(FormAgregarComponent,{
-//     closeOnNavigation: true
-//   });
- }
+  }
 
- resetForm():void{
-//   this.customerService.selected.nombre='';
-//   this.customerService.selected.cantidad=0;
-//   this.customerService.selected.id=null;
-// }
-// ShowDialog(id): void {
-//   this.dialog
-//     .open(ConfirmationDialogComponent, {
-//       data: `¿Esta Seguro que desea Borrar este Producto?`
-//     })
-//     .afterClosed()
-//     .subscribe((confirmado: Boolean) => {
-//       if (confirmado) {
-//         this.onDelete(id);
-//         alert("Cliente Eliminado");
-//       } else {
+  newProveedor(): void {
+       this.resetForm();
+       this.openModal();
+  }
+  openModal(): void {
+    const dialogRef = this.dialog.open(FormComponentProveedores, {
+    });
+    dialogRef.afterClosed().subscribe(res => {
+      console.log(res);
+      if (res) {
 
-//       }
-//     });
-// }
- }
- exportAsXLSX():void{
-  this.ExcelService.exportAsExcelFile(this.DATA, 'customer_data');
-}
+      }
+    })
+  }
+  openModalAgregar(): void {
+       const dialogRef = this.dialog.open(FormAgregarProveedorComponent,{
+         closeOnNavigation: true
+       });
+  }
+
+  resetForm(): void {
+       this.customerService.selected.nombre='';
+       this.customerService.selected.cantidad=0;
+       this.customerService.selected.id=null;
+       this.customerService.selected.region='';
+       this.customerService.selected.ciudad='';
+       this.customerService.selected.tipoProducto='';
+  }
+
+  exportAsXLSX(): void {
+    this.ExcelService.exportAsExcelFile(this.DATA, 'customer_data');
+  }
 
 }
 
