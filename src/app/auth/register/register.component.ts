@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService} from './../services/auth.service';
-
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +17,8 @@ export class RegisterComponent implements OnInit {
 
   });
 
-  constructor(private authSvc:AuthService, private router: Router) { }
+  constructor(private authSvc:AuthService, private router: Router, 
+    public flashMensaje : FlashMessagesService) { }
 
   ngOnInit(): void {}
 
@@ -26,8 +27,9 @@ async onRegister(){
   try{
     const user = this.authSvc.register(email, password);
     if(user){
-      //rediect to home
-      this.router.navigate(['/verification-email']);
+      this.flashMensaje.show('Usuario creado correctamente , revisa tu correo para confirmar',{cssClass:'alert-success',timeout:4000});
+    }else{
+      this.router.navigate(['/home'])
     }
   }
   catch(error){

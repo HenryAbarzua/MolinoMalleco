@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { promise } from 'protractor';
 import { first } from 'rxjs/operators';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 
 @Injectable()
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  constructor(public afAuth: AngularFireAuth,public flashMensaje : FlashMessagesService) { }
  //metodos
 async resetPassword(email:string):Promise<void>{
   try{
@@ -30,6 +31,7 @@ console.log(error)
 
     }
     catch (error) {
+      this.flashMensaje.show(error.message ,{cssClass:'alert-success',timeout:4000});
       console.log(error);
 
 
@@ -55,5 +57,7 @@ console.log(error)
       console.log(error);
     }
   }
-
+getUserAuth(){
+  return this.afAuth.authState
+}
 }

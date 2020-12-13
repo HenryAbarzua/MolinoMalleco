@@ -42,6 +42,9 @@ import {MatProgressSpinnerModule}from '@angular/material/progress-spinner';
 import { GrafProdComponent } from './components/graf-prod/graf-prod.component';
 import { MatSelectModule } from '@angular/material/select';
 import { ExcelService } from './service/ExcelService';
+import { LaboratorioComponent } from './components/laboratorio/laboratorio.component';
+import { InformesComponent } from './components/informes/informes.component';
+import {FlashMessagesModule,FlashMessagesService} from 'angular2-flash-messages';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,9 @@ import { ExcelService } from './service/ExcelService';
     LineaComponent,
     FormComponent,
     FormAgregarComponent,
-    GrafProdComponent
+    GrafProdComponent,
+    LaboratorioComponent,
+    InformesComponent
 
 
   ],
@@ -84,14 +89,15 @@ import { ExcelService } from './service/ExcelService';
     ChartsModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatSelectModule
+    MatSelectModule,
+    FlashMessagesModule
  
     
     
     
     
   ],
-  providers: [CustomersService,ExcelService],
+  providers: [CustomersService,ExcelService,FlashMessagesService],
   bootstrap: [AppComponent],
   entryComponents:[FormComponent,FormAgregarComponent]
 

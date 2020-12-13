@@ -1,3 +1,4 @@
+<div>
 <nav class="navbar navbar-light" style="background-color: #2dba8b;">
     <a class="navbar-brand" href="\">MolinoMalleco</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
@@ -9,6 +10,7 @@
             <li class="nav-item active">
                   <a class="nav-link" routerLink="/">Home</a>
       </li>
+      
     </ul>
     <ul class="navbar-nav mx-auto" *ngIf="user$ | async as user ; else login">
       <li class="nav-item" *ngIf="user">
@@ -24,7 +26,14 @@
         <a class="nav-link" routerLink="/customers" novalidate>Proveedores</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"> {{ user?.email }}</a>
+        <a class="nav-link" routerLink="/laboratorio" novalidate>laboratorio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/informes" novalidate>Informes</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif"> {{name2}}</a>
       </li>
     </ul>
     <ng-template #login>
@@ -34,11 +43,9 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/register">Register</a>
-        </li>
-        
-        
-        
+        </li>  
       </ul>
     </ng-template>
     </div>
 </nav>
+</div>

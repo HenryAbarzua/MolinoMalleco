@@ -28,6 +28,7 @@
     "@popperjs/core": "^2.4.4",
     "@types/chart.js": "^2.9.28",
     "angular-bootstrap-md": "^9.3.1",
+    "angular2-flash-messages": "^3.0.1",
     "angularfire2": "^5.4.2",
     "bootstrap": "^4.5.0",
     "chart.js": "^2.9.4",

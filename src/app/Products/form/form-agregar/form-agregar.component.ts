@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from "../../../service/products.service";
 import {MAT_DIALOG_DATA,MatDialogRef,MatDialog,} from "@angular/material/dialog";
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
   selector: 'app-form-agregar',
@@ -12,6 +13,7 @@ export class FormAgregarComponent implements OnInit {
 
   constructor(
     public products: ProductsService,
+    public flashMensaje : FlashMessagesService,
     private dialogRef: MatDialogRef<FormAgregarComponent>
   ) { }
 
@@ -25,12 +27,19 @@ export class FormAgregarComponent implements OnInit {
         cantidad: this.products.selected.cantidad,
       };
       this.products.addProducts(newProducts);
-    } else {
+    }else if(this.cantidad < 900)
+    {
+      this.flashMensaje.show('cantidad erronea',{cssClass:'alert-success',timeout:4000});
+    } 
+    
+    else {
       let num = parseInt(this.products.selected.cantidad.toString()) + this.cantidad
       this.products.selected.cantidad = num
       this.products.editProducts(this.products.selected);
+
     }
     this.close();
+
   }
   close(): void {
     this.dialogRef.close();

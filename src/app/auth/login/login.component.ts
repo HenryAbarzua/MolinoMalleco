@@ -3,7 +3,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
 import { runInThisContext } from 'vm';
 import { AuthService } from '../services/auth.service';
-
+import {FlashMessagesService} from 'angular2-flash-messages';
+import { auth } from 'firebase';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   });
 
-  constructor(private authSvc:AuthService, private router:Router) { }
+  constructor(private authSvc:AuthService, private router:Router, public flashMensaje : FlashMessagesService) { }
 
   ngOnInit(): void {
   }
@@ -32,7 +33,7 @@ try{
     //redirec to home
     this.router.navigate(['/home']);
   }else if(user){
-    this.router.navigate(['verification-email'])
+    this.router.navigate(['/login'])
   }else{
     this.router.navigate(['/register'])
   }
@@ -40,6 +41,7 @@ try{
 
 catch(error){
   console.log(error);
+  
 }
 
 

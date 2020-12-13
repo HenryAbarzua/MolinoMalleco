@@ -158,7 +158,7 @@ export class ProducstListComponent implements OnInit {
       .subscribe((confirmado: Boolean) => {
         if (confirmado) {
           this.onDelete(id);
-          alert("Cliente Eliminado");
+          alert("Producto Eliminado");
         } else {
          
         }
