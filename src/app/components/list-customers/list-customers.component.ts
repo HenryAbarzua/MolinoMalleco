@@ -139,6 +139,7 @@ export class ListCustomersComponent implements OnInit {
   }
   openModal(): void {
     const dialogRef = this.dialog.open(FormComponentProveedores, {
+      disableClose: true
     });
     dialogRef.afterClosed().subscribe(res => {
       console.log(res);
@@ -149,7 +150,7 @@ export class ListCustomersComponent implements OnInit {
   }
   openModalAgregar(): void {
        const dialogRef = this.dialog.open(FormAgregarProveedorComponent,{
-         closeOnNavigation: true
+        disableClose: true
        });
   }
 

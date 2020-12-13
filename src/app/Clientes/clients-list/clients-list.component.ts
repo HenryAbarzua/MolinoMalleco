@@ -116,6 +116,7 @@ export class ClientsListComponent implements OnInit {
   }
   openModal():void{
     const dialogRef = this.dialog.open(FormClientsComponent,{
+      disableClose: true
     });
    dialogRef.afterClosed().subscribe(res => {
     console.log(res);

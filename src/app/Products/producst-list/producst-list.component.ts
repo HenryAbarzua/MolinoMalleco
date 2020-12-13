@@ -127,6 +127,7 @@ export class ProducstListComponent implements OnInit {
   }
   openModal():void{
     const dialogRef = this.dialog.open(FormComponent,{
+      disableClose: true
     });
    dialogRef.afterClosed().subscribe(res => {
      console.log(res);
@@ -138,7 +139,7 @@ export class ProducstListComponent implements OnInit {
 //TODO crear nuevo modal
   openModalAgregar():void{
     const dialogRef = this.dialog.open(FormAgregarComponent,{ 
-      closeOnNavigation: true
+      disableClose: true
     });
   }
 
