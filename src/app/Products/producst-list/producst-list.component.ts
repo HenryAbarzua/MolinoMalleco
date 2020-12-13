@@ -127,7 +127,7 @@ export class ProducstListComponent implements OnInit {
   }
   openModal():void{
     const dialogRef = this.dialog.open(FormComponent,{
-      data: 'Estas seguro que quieres hacer esto?'
+      disableClose: true
     });
    dialogRef.afterClosed().subscribe(res => {
      console.log(res);
@@ -139,7 +139,7 @@ export class ProducstListComponent implements OnInit {
 //TODO crear nuevo modal
   openModalAgregar():void{
     const dialogRef = this.dialog.open(FormAgregarComponent,{ 
-      closeOnNavigation: true
+      disableClose: true
     });
   }
 
@@ -149,21 +149,6 @@ export class ProducstListComponent implements OnInit {
     this.productsService.selected.id=null;
   }
 
-  ShowDialog(id): void {
-    this.dialog
-      .open(ConfirmationDialogComponent, {
-        data: `¿Esta Seguro que desea Borrar este Producto?`
-      })
-      .afterClosed()
-      .subscribe((confirmado: Boolean) => {
-        if (confirmado) {
-          this.onDelete(id);
-          alert("Producto Eliminado");
-        } else {
-         
-        }
-      });
-  }
 
 
   

@@ -45,6 +45,10 @@ import { ExcelService } from './service/ExcelService';
 import { LaboratorioComponent } from './components/laboratorio/laboratorio.component';
 import { InformesComponent } from './components/informes/informes.component';
 import {FlashMessagesModule,FlashMessagesService} from 'angular2-flash-messages';
+import {FormComponentProveedores} from './components/form/form.component';
+import { FormAgregarProveedorComponent } from './components/form/form-agregar-proveedor/form-agregar-proveedor.component';
+import { FormClientsComponent } from './Clientes/form-clients/form-clients.component';
+
 
 @NgModule({
   declarations: [
@@ -67,6 +71,10 @@ import {FlashMessagesModule,FlashMessagesService} from 'angular2-flash-messages'
     GrafProdComponent,
     LaboratorioComponent,
     InformesComponent
+    FormComponentProveedores,
+    GrafProdComponent,
+    FormAgregarProveedorComponent,
+    FormClientsComponent
 
 
   ],
@@ -99,7 +107,7 @@ import {FlashMessagesModule,FlashMessagesService} from 'angular2-flash-messages'
   ],
   providers: [CustomersService,ExcelService,FlashMessagesService],
   bootstrap: [AppComponent],
-  entryComponents:[FormComponent,FormAgregarComponent]
+  entryComponents:[FormComponent,FormAgregarComponent,FormComponentProveedores,FormAgregarProveedorComponent,FormClientsComponent]
 
 })
 export class AppModule { }

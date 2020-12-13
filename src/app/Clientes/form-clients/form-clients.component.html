@@ -1,0 +1,25 @@
+<div class="container">
+    <mat-form-field>
+      <input matInput placeholder="Nombre Empresa" name="nombreEmpresa" [(ngModel)]="this.clients.selected.nombreEmpresa">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Rut Empresa" name="rutEmpresa" [(ngModel)]="this.clients.selected.rutEmpresa">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Nombre Titular" name="nombreTitular" [(ngModel)]="this.clients.selected.nombreTitular">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Región" name="region" [(ngModel)]="this.clients.selected.region">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Ciudad" name="ciudad" [(ngModel)]="this.clients.selected.ciudad">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Tipo Rubro" name="tipoRubro" [(ngModel)]="this.clients.selected.tipoRubro">
+      </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onSaveForm()">
+      Guardar
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+  

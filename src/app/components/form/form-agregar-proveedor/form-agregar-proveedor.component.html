@@ -1,0 +1,22 @@
+<div class="container">
+    <mat-form-field>
+      <input readonly matInput placeholder="Nombre" name="nombre" [(ngModel)]="this.proveedores.selected.nombre">
+    </mat-form-field>
+    <mat-form-field>
+      <input readonly matInput placeholder="Región" name="region" [(ngModel)]="this.proveedores.selected.region">
+    </mat-form-field>
+    <mat-form-field>
+      <input readonly matInput placeholder="Ciudad" name="ciudad" [(ngModel)]="this.proveedores.selected.ciudad">
+    </mat-form-field>
+    <mat-form-field>
+      <input readonly matInput placeholder="Tipo de Producto" name="tipoProducto" [(ngModel)]="this.proveedores.selected.tipoProducto">
+    </mat-form-field>
+    <mat-form-field>
+        <input type="number" matInput placeholder="Cantidad" name="cantidad" [(ngModel)]="cantidad">
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="onSaveForm()">
+      Guardar
+      <mat-icon>save</mat-icon>
+    </button>
+  </div>
+  
