@@ -59,7 +59,7 @@ export class ListCustomersComponent implements OnInit {
   ngOnInit() {
     this.customerService.getAllProveedores().subscribe(res => this.dataSource.data = res)
     this.customerService.getAllProveedores().subscribe((res2: any[]) => {
-      this.customers = res2
+      this.customers = res2;
       this.customers.forEach(item => {
         this.DATA.push(item)
       })

@@ -48,6 +48,7 @@ import {FlashMessagesModule,FlashMessagesService} from 'angular2-flash-messages'
 import {FormComponentProveedores} from './components/form/form.component';
 import { FormAgregarProveedorComponent } from './components/form/form-agregar-proveedor/form-agregar-proveedor.component';
 import { FormClientsComponent } from './Clientes/form-clients/form-clients.component';
+import { GrafProveedoresComponent } from './components/graf-proveedores/graf-proveedores.component';
 
 
 @NgModule({
@@ -70,11 +71,12 @@ import { FormClientsComponent } from './Clientes/form-clients/form-clients.compo
     FormAgregarComponent,
     GrafProdComponent,
     LaboratorioComponent,
-    InformesComponent
+    InformesComponent,
     FormComponentProveedores,
     GrafProdComponent,
     FormAgregarProveedorComponent,
-    FormClientsComponent
+    FormClientsComponent,
+    GrafProveedoresComponent
 
 
   ],

@@ -10,7 +10,7 @@ import {ConfirmationDialogComponent} from "../../Clientes/client-details/confirm
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-
+import { ExcelService } from '../../service/ExcelService';
 
 
 
@@ -20,6 +20,8 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./producst-list.component.scss']
 })
 export class ProducstListComponent implements OnInit {
+  DATA: any[] = [];
+  products: any[] = [];
   public load: Boolean = false;
   displayedColumns: string[] = ['nombre', 'cantidad','actions','nuevo'];
   dataSource = new MatTableDataSource();
@@ -44,12 +46,23 @@ export class ProducstListComponent implements OnInit {
  
   constructor(
     private productsService: ProductsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private ExcelService: ExcelService
     ){ 
       this.downloadPDF(); 
     }
   ngOnInit() {
+
     this.productsService.getAllProducts().subscribe(res => this.dataSource.data = res);
+    this.productsService.getAllProducts().subscribe((res2: any[])=>{
+      this.products = res2;
+      this.products.forEach(item =>{
+        this.DATA.push(item)
+      })
+    });
+    
+    
+    
     setTimeout(()=>{
       this.load = true;
     }, 2000);
@@ -63,8 +76,8 @@ export class ProducstListComponent implements OnInit {
     };
     html2canvas(DATA, options).then((canvas)=>{
       const img = canvas.toDataURL('image/PNG');
-      const bufferX=15;
-      const bufferY=15;
+      const bufferX=4;
+      const bufferY=3;
       const imgProps = (doc as any).getImageProperties(img);
       const pdfWidth = doc.internal.pageSize.getWidth() -2 * bufferX;
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
@@ -149,7 +162,9 @@ export class ProducstListComponent implements OnInit {
     this.productsService.selected.id=null;
   }
 
-
+  exportAsXLSX(): void {
+    this.ExcelService.exportAsExcelFile(this.DATA, 'customer_data');
+  }
 
   
 }

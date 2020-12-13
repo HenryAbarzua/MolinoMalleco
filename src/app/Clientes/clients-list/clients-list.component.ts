@@ -8,6 +8,7 @@ import {FormClientsComponent} from '../form-clients/form-clients.component';
 import Swal from 'sweetalert2';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ExcelService } from '../../service/ExcelService';
 
 
 
@@ -17,6 +18,8 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./clients-list.component.scss']
 })
 export class ClientsListComponent implements OnInit {
+  DATA: any[] = [];
+  clients: any[] = [];
   public load: Boolean = false;
   displayedColumns: string[] = ['nombreEmpresa', 'rutEmpresa','nombreTitular','region','ciudad','tipoRubro','actions'];
   dataSource = new MatTableDataSource();
@@ -39,20 +42,28 @@ export class ClientsListComponent implements OnInit {
 
   constructor(
     private clientService: ClientsService, 
-    public dialog:MatDialog
+    public dialog:MatDialog,
+    private ExcelService: ExcelService
     ) { 
-      this.downloadPDF();
+      this.downloadPDF3();
     }
 
 
   ngOnInit(): void {
     this.clientService.getAllClients().subscribe(res => this.dataSource.data = res);
+    this.clientService.getAllClients().subscribe((res2: any[])=>{
+    this.clients = res2;
+    this.clients.forEach(item =>{
+      this.DATA.push(item)
+    })
+    });
+    
     setTimeout(()=>{
       this.load = true;
     }, 2000);
   }
-  public downloadPDF(): void {
-    const DATA = document.getElementById('htmlData')
+  public downloadPDF3(): void {
+    const DATA = document.getElementById('htmlData3')
     const doc = new jsPDF('p', 'pt' , 'a4');
     const options ={
       background: 'white',
@@ -68,7 +79,7 @@ export class ClientsListComponent implements OnInit {
       doc.addImage(img,'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) =>{
-      docResult.save(`${new Date().toISOString()}_MolinoMallecoProduct.pdf`);
+      docResult.save(`${new Date().toISOString()}_MolinoMallecoClientes.pdf`);
     });
   }
   ngAfterViewInit(){
@@ -138,6 +149,8 @@ export class ClientsListComponent implements OnInit {
   }
 
 
-
+  exportAsXLSX(): void {
+    this.ExcelService.exportAsExcelFile(this.DATA, 'Clients_data');
+  }
   
 }
