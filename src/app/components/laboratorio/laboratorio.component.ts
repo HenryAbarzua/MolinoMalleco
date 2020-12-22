@@ -11,5 +11,6 @@ export class LaboratorioComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
 }
