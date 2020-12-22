@@ -1,49 +1,54 @@
 <div class="container">
     <mat-form-field>
-      <input matInput placeholder="glutenHumedo" name="glutenHumedo" [(ngModel)]="this.laboratorios.selected.glutenHumedo">
+      <input matInput type="number" placeholder="glutenHumedo" name="glutenHumedo" [(ngModel)]="this.laboratorios.selected.glutenHumedo" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="glutenIndex" name="glutenIndex" [(ngModel)]="this.laboratorios.selected.glutenIndex">
+      <input matInput type="number" placeholder="glutenIndex" name="glutenIndex" [(ngModel)]="this.laboratorios.selected.glutenIndex" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="granosBrotados" name="granosBrotados" [(ngModel)]="this.laboratorios.selected.granosBrotados">
+      <input matInput type="number" placeholder="granosBrotados" name="granosBrotados" [(ngModel)]="this.laboratorios.selected.granosBrotados" required>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="granosDanados" name="granosDanados" [(ngModel)]="this.laboratorios.selected.granosDanados">
+      <input matInput  type="number" placeholder="granosDanados" name="granosDanados" [(ngModel)]="this.laboratorios.selected.granosDanados" required>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="granosPartidos" name="granosPartidos" [(ngModel)]="this.laboratorios.selected.granosPartidos">
+        <input matInput type="number" placeholder="granosPartidos" name="granosPartidos" [(ngModel)]="this.laboratorios.selected.granosPartidos" required>
     </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="humedad" name="humedad" [(ngModel)]="this.laboratorios.selected.humedad">
+        <input matInput type="number" placeholder="humedad" name="humedad" [(ngModel)]="this.laboratorios.selected.humedad" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="impurezas" name="impurezas" [(ngModel)]="this.laboratorios.selected.impurezas">
+        <input matInput type="number" placeholder="impurezas" name="impurezas" [(ngModel)]="this.laboratorios.selected.impurezas" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="indiceCaida" name="indiceCaida" [(ngModel)]="this.laboratorios.selected.indiceCaida">
+        <input matInput type="number" placeholder="indiceCaida" name="indiceCaida" [(ngModel)]="this.laboratorios.selected.indiceCaida" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="nombreAnalista" name="nombreAnalista" [(ngModel)]="this.laboratorios.selected.nombreAnalista">
+        <input matInput type="text" placeholder="nombreAnalista" name="nombreAnalista" [(ngModel)]="this.laboratorios.selected.nombreAnalista" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="nombreResponsable" name="nombreResponsable" [(ngModel)]="this.laboratorios.selected.nombreResponsable">
+        <input matInput type="text" placeholder="nombreResponsable" name="nombreResponsable" [(ngModel)]="this.laboratorios.selected.nombreResponsable" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="numMuestra" name="numMuestra" [(ngModel)]="this.laboratorios.selected.numMuestra">
+        <input matInput type="number" placeholder="numMuestra" name="numMuestra" [(ngModel)]="this.laboratorios.selected.numMuestra" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="pesoGrano" name="pesoGrano" [(ngModel)]="this.laboratorios.selected.pesoGrano">
+        <input matInput type="number" placeholder="pesoGrano" name="pesoGrano" [(ngModel)]="this.laboratorios.selected.pesoGrano" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="pesoHelectolitro" name="pesoHelectolitro" [(ngModel)]="this.laboratorios.selected.pesoHelectolitro">
+        <input matInput type="number" placeholder="pesoHelectolitro" name="pesoHelectolitro" [(ngModel)]="this.laboratorios.selected.pesoHelectolitro" required>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="valorSedimento" name="valorSedimento" [(ngModel)]="this.laboratorios.selected.valorSedimento">
+        <input matInput type="number" placeholder="valorSedimento" name="valorSedimento" [(ngModel)]="this.laboratorios.selected.valorSedimento" required>
       </mat-form-field>
+      <br>
     <button mat-flat-button color="primary" (click)="onSaveForm()">
       Guardar
      
     </button>
+    <button mat-flat-button color="warn" (click)="close()">
+        Cerrar
+       
+      </button>
   </div>
   

@@ -68,7 +68,7 @@ displayedColumns: string[] = ["glutenHumedo",
     });
     setTimeout(()=>{
       this.load = true;
-    }, 2000);
+    }, 3000);
   }
 
    public downloadPDF4(): void {

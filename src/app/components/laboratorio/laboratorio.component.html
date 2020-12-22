@@ -2,9 +2,8 @@
   <mat-spinner style="margin:0 auto;"></mat-spinner>
 </div>
 <div *ngIf="load">
-  <label style="margin-left: 400px;">Niveles de Humedad Permitidos (%)</label>
-  <app-graf-lab></app-graf-lab>
-</div>
+
+
   <div>
 <mat-form-field>
   <mat-label></mat-label>
@@ -51,7 +50,7 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-headerstyle="width: 120px;">Punta Negra</th>
       <td mat-cell *matCellDef="let element"> {{element.granosPuntaNegra}}</td>
     </ng-container>
-    <ng-container matColumnDef="humedad">
+    <ng-container matColumnDef="humedad" >
       <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 120px;">Humedad</th>
       <td mat-cell *matCellDef="let element"> {{element.humedad}}</td>
     </ng-container>
@@ -111,13 +110,16 @@
   <br>
   
 </div>
-  <div>
-    <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF4()">Download PDF</button>
-  </div>
-  <br>
+<br>
   <div>
     <button (click)="exportAsXLSX()"
     class="btn col col-lg-2 btn-info btn-block ml-2">
       <mat-icon>get_app</mat-icon>Download Excel</button>
   </div>
+</div>
+<label style="margin-left: 400px;">Niveles de Humedad Permitidos (%)</label>
+<app-graf-lab></app-graf-lab>
+<label style="margin-left: 400px;">Gluten húmedo sobre base 14% humedad(Trigo)</label>
+<app-graf-lab2></app-graf-lab2>
+<br>
 </div>

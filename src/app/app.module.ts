@@ -52,6 +52,7 @@ import { FormClientsComponent } from './Clientes/form-clients/form-clients.compo
 import { GrafProveedoresComponent } from './components/graf-proveedores/graf-proveedores.component';
 import { GrafLabComponent } from './components/graf-lab/graf-lab.component';
 import { FormLaboratorioComponent } from './components/form-laboratorio/form-laboratorio.component';
+import { GrafLab2Component } from './components/graf-lab2/graf-lab2.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { FormLaboratorioComponent } from './components/form-laboratorio/form-lab
     FormClientsComponent,
     GrafProveedoresComponent,
     GrafLabComponent,
-    FormLaboratorioComponent
+    FormLaboratorioComponent,
+    GrafLab2Component
 
 
   ],
