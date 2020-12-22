@@ -33,7 +33,8 @@ displayedColumns: string[] = ["glutenHumedo",
   "numMuestra",
   "pesoGrano",
   "pesoHelectolitro",
-  "valorSedimento"]
+  "valorSedimento",
+  "actions"]
   dataSource = new MatTableDataSource();
   @ViewChild(MatSort)sort: MatSort;
   private paginator: MatPaginator;
