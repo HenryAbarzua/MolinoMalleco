@@ -34,7 +34,7 @@ export class GrafProdComponent implements OnInit {
       yAxes: [
         {
           ticks: {
-            max : 1000,
+            max : 2000,
             min : 0,
           }
         }

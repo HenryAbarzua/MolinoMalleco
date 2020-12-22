@@ -31,6 +31,7 @@ import { ListCustomersComponent } from './components/list-customers/list-custome
 import {MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import {CustomersService} from './service/customers.service';
 import {MatCardModule} from '@angular/material/card';
 import {FormComponent} from './Products/form/form.component';
@@ -49,6 +50,8 @@ import {FormComponentProveedores} from './components/form/form.component';
 import { FormAgregarProveedorComponent } from './components/form/form-agregar-proveedor/form-agregar-proveedor.component';
 import { FormClientsComponent } from './Clientes/form-clients/form-clients.component';
 import { GrafProveedoresComponent } from './components/graf-proveedores/graf-proveedores.component';
+import { GrafLabComponent } from './components/graf-lab/graf-lab.component';
+import { FormLaboratorioComponent } from './components/form-laboratorio/form-laboratorio.component';
 
 
 @NgModule({
@@ -76,7 +79,9 @@ import { GrafProveedoresComponent } from './components/graf-proveedores/graf-pro
     GrafProdComponent,
     FormAgregarProveedorComponent,
     FormClientsComponent,
-    GrafProveedoresComponent
+    GrafProveedoresComponent,
+    GrafLabComponent,
+    FormLaboratorioComponent
 
 
   ],
@@ -100,7 +105,8 @@ import { GrafProveedoresComponent } from './components/graf-proveedores/graf-pro
     MatIconModule,
     MatProgressSpinnerModule,
     MatSelectModule,
-    FlashMessagesModule
+    FlashMessagesModule,
+    MatDatepickerModule
  
     
     

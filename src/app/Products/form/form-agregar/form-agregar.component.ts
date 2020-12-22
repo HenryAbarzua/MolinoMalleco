@@ -34,5 +34,6 @@ export class FormAgregarComponent implements OnInit {
   }
   close(): void {
     this.dialogRef.close();
+    
   }
 }

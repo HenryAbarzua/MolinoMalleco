@@ -54,9 +54,14 @@
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   <div>
-    <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF()">Download PDF</button>
-    <button (click)="exportAsXLSX()">
-      <mat-icon>get_app</mat-icon>Download Excel</button>
+    <br>
+    <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF()">
+      <mat-icon style="margin-top: 2px;">get_app</mat-icon>Download PDF</button>
+  </div>
+  <br>
+  <div>
+    <button (click)="exportAsXLSX()" class="btn col col-lg-2 btn-info btn-block ml-2" >
+      <mat-icon style="margin-top: 2px;">get_app</mat-icon>Download Excel</button>
   </div>
   <div class="container">
     <h1>Grafico</h1>

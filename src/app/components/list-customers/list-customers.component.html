@@ -64,9 +64,13 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  <br>
   <div>
-    <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF2()">Download PDF</button> 
-    <button (click)="exportAsXLSX()">
+    <button class="btn col col-lg-2 btn-danger btn-block ml-2" (click)="downloadPDF2()">Download PDF</button>
+  </div>
+  <br>
+<div> 
+    <button (click)="exportAsXLSX()" class="btn col col-lg-2 btn-info btn-block ml-2">
       <mat-icon>get_app</mat-icon>Download Excel</button>
   </div>
   
