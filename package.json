@@ -45,7 +45,7 @@
     "rxjs": "~6.5.4",
     "sweetalert2": "^10.12.3",
     "tslib": "^1.10.0",
-    "xlsx": "^0.16.9",
+    "xlsx": "^0.17.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
